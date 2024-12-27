@@ -9,6 +9,15 @@ from rest_framework.exceptions import AuthenticationFailed
 import jwt,datetime
 
 
+from django.shortcuts import render
+
+
+def index(request):
+    return render(request, "users/index.html")
+
+def room(request, room_name):
+    return render(request, "users/room.html", {"room_name": room_name})
+
 class register(APIView):
     def post(self, request):
         serializer = UserSerializer(data=request.data)
